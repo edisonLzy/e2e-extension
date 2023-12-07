@@ -1,6 +1,6 @@
 import { Command } from 'cmdk'
 import { SearchInput } from './components/search-input';
-import { EscButton } from './components/esc-button';
+import { Kbd } from './components/kbd';
 import { useOpen } from './hooks/useOpen';
 import './App.css';
 
@@ -16,7 +16,7 @@ export default function App() {
 
       <header className='flex divider-bottom items-center px-4 h-[56px]'>
         <SearchInput />
-        <EscButton className='ml-4' onClick={close} />
+        <Kbd className='ml-4' onClick={close}> ESC </Kbd>
       </header>
 
       <main className='px-4'>
