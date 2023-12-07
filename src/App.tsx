@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useState, KeyboardEvent } from 'react';
 import { Command } from 'cmdk'
-import { SearchInput } from './components/search-input';
 import { Kbd } from './components/kbd';
 import { useOpen } from './hooks/useOpen';
 import { useTestGroups } from './hooks/useTestGroups'
@@ -17,20 +16,30 @@ export default function App() {
   const [open, { toggle }] = useOpen();
   const [groups, { openInEditor }] = useTestGroups();
 
+  const handleInputKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Backspace' && e.currentTarget.value === '') {
+      e.stopPropagation()
+      e.preventDefault()
+      setSelectedGroup(null);
+    }
+  }
+
   return (
     <Command.Dialog
       open={open}
       onOpenChange={toggle}
       loop
     >
-
-      <header className='flex divider-bottom items-center px-4 h-[56px]'>
-        <SearchInput
+      <header className='flex items-center divider-bottom  px-4 h-[56px]'>
+        <label htmlFor="search-input" className='w-6 h-6 text-gray-400 mr-3 i-ic-sharp-search' />
+        <Command.Input
+          autoFocus
+          className='flex-1 text-gray-800 placeholder-gray-400'
+          id="search-input"
+          placeholder="Find Test Case..."
           value={inputValue}
-          onChange={setInputValue}
-          onBackspace={() => {
-            setSelectedGroup(null)
-          }}
+          onValueChange={setInputValue}
+          onKeyDown={handleInputKeyDown}
         />
       </header>
 
