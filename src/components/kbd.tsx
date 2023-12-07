@@ -1,8 +1,16 @@
-import { ComponentProps } from "react";
-import cls from 'classnames';
+import type { ComponentProps, ReactNode } from "react";
 
-type KbdProps = ComponentProps<'kbd'>
+type KbdProps = ComponentProps<'kbd'> & {
+    tip?: ReactNode
+}
 
-export function Kbd(props: KbdProps){
-    return <kbd {...props} className={cls(props.className,'px-1.5 py-1 cursor-pointer rounded-md shadow-sm border-slate-300 border border-solid text-gray-800 text-xs')}/>
+export function Kbd(props: KbdProps) {
+
+    const { tip } = props
+
+    return <>
+        <kbd {...props} className={'px-1 py-0.5 font-thin border border-gray border-solid rounded text-gray-600'} />
+        {/* render tip */}
+        {tip && <span className='text-xs text-gray-400'>{tip}</span>}
+    </>
 }
