@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "CRXJS React Vite Example",
+    "version": "1.0.0",
+    "permissions": ["activeTab"],
+    "background": {
+        "service_worker": "src/background.ts",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+          "js": ["src/main.tsx"],
+          "matches": ["http://localhost/*"]
+        }
+    ],
+    "commands": {
+        "open": {
+            "suggested_key": {
+                "default": "Ctrl+K",
+                "mac": "Command+K"
+            },
+            "description": "Open The Menu"
+        }
+    }
+}
