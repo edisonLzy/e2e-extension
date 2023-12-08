@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:server": "tsx watch server/index.cts",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
@@ -12,14 +13,23 @@
   "dependencies": {
     "@iconify-json/ic": "^1.1.16",
     "@unocss/preset-icons": "^0.58.0",
+    "chokidar": "^3.5.3",
     "classnames": "^2.3.2",
     "cmdk": "^0.2.0",
+    "cors": "^2.8.5",
+    "debounce": "^2.0.0",
+    "express": "^4.18.2",
+    "express-sse": "0.5.1",
+    "launch-editor": "^2.6.1",
+    "launch-editor-middleware": "^2.6.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tsx": "^4.6.2"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^1.0.14",
     "@types/chrome": "^0.0.254",
+    "@types/express": "^4.17.21",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
