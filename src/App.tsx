@@ -44,8 +44,8 @@ export default function App() {
       </header>
 
       <main className='px-4 py-2'>
-        <Command.Empty> No results found. </Command.Empty>
         <Command.List >
+          
           {
             selectedGroup ?
               <Command.Group heading='TODO Cases'>
@@ -66,6 +66,7 @@ export default function App() {
                     key={group.name} group={group}></GroupItem>)}
               </Command.Group>
           }
+          <Command.Empty> No results found. </Command.Empty>
         </Command.List>
       </main>
 

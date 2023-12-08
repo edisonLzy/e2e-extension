@@ -14,6 +14,7 @@ export function useTestGroups(){
         es.onmessage = function (event) {
             try {
                 console.log(JSON.parse(event.data));
+                
                 setGroups(JSON.parse(event.data))
             } catch {
                 setGroups([])
